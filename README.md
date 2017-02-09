@@ -1,5 +1,8 @@
 # seal-connect-service
 
+[![CircleCI](https://circleci.com/gh/sealsystems/seal-connect-service.svg?style=svg)](https://circleci.com/gh/sealsystems/seal-connect-service)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/d7djlcycod4jhj4i?svg=true)](https://ci.appveyor.com/project/Plossys/seal-connect-service)
+
 Connects to a service with given host name and port number.
 
 ## Installation
@@ -27,14 +30,14 @@ connectService({
 }, {
   name: 'hostname',
   port: 3000
-} (err, client) => {
+}, (err, client) => {
   if (!err) {
     throw new Error('An error occurred while connecting to the service.');
   }
 
   client.on('response', (response) => {
     console.log(`Response status: ${response.statusCode}`);
-  };
+  });
 
   client.write('Hello service!');
   client.end();
