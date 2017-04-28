@@ -1,6 +1,6 @@
 {
   "name": "seal-connect-service",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Connects to a service.",
   "author": {
     "name": "SEAL Systems AG",
