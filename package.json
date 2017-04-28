@@ -20,18 +20,18 @@
   "main": "lib/connectService.js",
   "dependencies": {
     "getenv": "0.7.0",
-    "seal-consul": "3.2.8",
-    "seal-log": "1.1.10",
+    "@sealsystems/seal-consul": "3.5.4",
+    "seal-log": "1.2.0",
     "seal-tlscert": "1.2.1"
   },
   "devDependencies": {
-    "assertthat": "0.8.3",
+    "assertthat": "0.9.0",
     "eslint-config-seal": "0.0.9",
-    "nock": "9.0.4",
+    "nock": "9.0.13",
     "nodeenv": "0.2.1",
     "proxyquire": "1.7.11",
-    "roboter": "0.14.4",
-    "roboter-server": "0.14.4"
+    "roboter": "0.15.1",
+    "roboter-server": "0.15.1"
   },
   "repository": {
     "type": "git",
