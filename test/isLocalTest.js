@@ -6,7 +6,7 @@ const proxyquire = require('proxyquire');
 let errGetHostname;
 
 const isLocal = proxyquire('../lib/isLocal', {
-  'seal-consul': {
+  '@sealsystems/seal-consul': {
     getHostname (callback) {
       callback(errGetHostname, 'foo.node.dc1.consul');
     }

@@ -10,7 +10,7 @@ const lookup = proxyquire('../lib/lookup', {
   './isLocal' (targethost, callback) {
     callback(errIsLocal, targethost === 'foo.node.dc1.consul');
   },
-  'seal-consul': {
+  '@sealsystems/seal-consul': {
     lookup (host, callback) {
       callback(errLookup, '1.2.3.4');
     }
