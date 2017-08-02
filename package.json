@@ -27,11 +27,11 @@
   "devDependencies": {
     "assertthat": "0.10.3",
     "eslint-config-seal": "0.0.9",
-    "nock": "9.0.13",
+    "nock": "9.0.14",
     "nodeenv": "0.2.1",
     "proxyquire": "1.8.0",
-    "roboter": "0.15.3",
-    "roboter-server": "0.15.3"
+    "roboter": "0.15.4",
+    "roboter-server": "0.15.4"
   },
   "repository": {
     "type": "git",
