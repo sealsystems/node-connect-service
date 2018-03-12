@@ -1,5 +1,5 @@
 {
-  "name": "seal-connect-service",
+  "name": "@sealsystems/connect-service",
   "version": "1.0.10",
   "description": "Connects to a service.",
   "author": {
@@ -20,21 +20,21 @@
   "main": "lib/connectService.js",
   "dependencies": {
     "getenv": "0.7.0",
-    "@sealsystems/seal-consul": "3.5.7",
+    "@sealsystems/consul": "3.5.12",
     "seal-log": "1.2.0",
-    "seal-tlscert": "1.2.1"
+    "seal-tlscert": "1.2.3"
   },
   "devDependencies": {
-    "assertthat": "0.10.3",
-    "eslint-config-seal": "0.0.9",
-    "nock": "9.0.14",
-    "nodeenv": "0.2.1",
-    "proxyquire": "1.8.0",
-    "roboter": "0.15.4",
-    "roboter-server": "0.15.4"
+    "@sealsystems/eslint-config-es": "1.1.1",
+    "assertthat": "1.0.0",
+    "nock": "9.2.3",
+    "nodeenv": "1.0.0",
+    "proxyquire": "2.0.0",
+    "roboter": "0.16.0",
+    "roboter-server": "0.16.0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/sealsystems/seal-connect-service.git"
+    "url": "https://github.com/sealsystems/node-connect-service.git"
   }
 }
