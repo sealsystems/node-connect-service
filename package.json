@@ -36,5 +36,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/sealsystems/node-connect-service.git"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
