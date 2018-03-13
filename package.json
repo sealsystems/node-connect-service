@@ -21,8 +21,8 @@
   "dependencies": {
     "getenv": "0.7.0",
     "@sealsystems/consul": "3.5.12",
-    "seal-log": "1.2.0",
-    "seal-tlscert": "1.2.3"
+    "@sealsystems/log": "1.2.4",
+    "@sealsystems/tlscert": "2.0.1"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "1.1.1",
