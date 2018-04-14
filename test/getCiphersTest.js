@@ -17,11 +17,11 @@ suite('getCiphers', () => {
   });
 
   test('returns the contents of the environment variable TLS_CIPHERS.', (done) => {
-    nodeenv('TLS_CIPHERS', 'foobar', (restore) => {
-      assert.that(getCiphers()).is.equalTo('foobar');
-      restore();
-      done();
-    });
+    const restore = nodeenv('TLS_CIPHERS', 'foobar');
+
+    assert.that(getCiphers()).is.equalTo('foobar');
+    restore();
+    done();
   });
 
   // Note: Depends on test above!
