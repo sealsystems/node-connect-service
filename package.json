@@ -28,7 +28,7 @@
     "assertthat": "0.10.3",
     "eslint-config-seal": "0.0.9",
     "nock": "9.0.14",
-    "nodeenv": "0.2.1",
+    "nodeenv": "1.0.0",
     "proxyquire": "1.8.0",
     "roboter": "0.15.4",
     "roboter-server": "0.15.4"

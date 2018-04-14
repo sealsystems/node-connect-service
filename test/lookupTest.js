@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('assertthat');
+const nodeenv = require('nodeenv');
 const proxyquire = require('proxyquire');
 
 let errLookup;
@@ -81,6 +82,19 @@ suite('lookup', () => {
       assert.that(err).is.not.falsy();
       assert.that(err.message).is.equalTo('foobar');
       done();
+    });
+  });
+
+  suite('cloud service discovery', () => {
+    test('directly uses service name.', (done) => {
+      const restore = nodeenv('SERVICE_DISCOVERY', 'cloud');
+
+      lookup('bodyscanner', (err, ip) => {
+        assert.that(err).is.falsy();
+        assert.that(ip).is.equalTo('bodyscanner');
+        restore();
+        done();
+      });
     });
   });
 });

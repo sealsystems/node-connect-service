@@ -47,63 +47,63 @@ suite('getProtocol', () => {
 
   suite('with TLS_UNPROTECTED set to \'none\'', () => {
     test('returns \'https\'.', (done) => {
-      nodeenv('TLS_UNPROTECTED', 'none', (restore) => {
-        getProtocol({ name: 'foo.node.dc1.consul' }, (err, protocol) => {
-          assert.that(err).is.falsy();
-          assert.that(protocol).is.equalTo('https');
-          restore();
-          done();
-        });
+      const restore = nodeenv('TLS_UNPROTECTED', 'none');
+
+      getProtocol({ name: 'foo.node.dc1.consul' }, (err, protocol) => {
+        assert.that(err).is.falsy();
+        assert.that(protocol).is.equalTo('https');
+        restore();
+        done();
       });
     });
   });
 
   suite('with TLS_UNPROTECTED set to \'world\'', () => {
     test('returns \'http\'.', (done) => {
-      nodeenv('TLS_UNPROTECTED', 'world', (restore) => {
-        getProtocol({ name: 'foo.node.dc1.consul' }, (err, protocol) => {
-          assert.that(err).is.falsy();
-          assert.that(protocol).is.equalTo('http');
-          restore();
-          done();
-        });
+      const restore = nodeenv('TLS_UNPROTECTED', 'world');
+
+      getProtocol({ name: 'foo.node.dc1.consul' }, (err, protocol) => {
+        assert.that(err).is.falsy();
+        assert.that(protocol).is.equalTo('http');
+        restore();
+        done();
       });
     });
   });
 
   suite('with TLS_UNPROTECTED set to \'loopback\'', () => {
     test('returns \'http\' if target is the same host.', (done) => {
-      nodeenv('TLS_UNPROTECTED', 'loopback', (restore) => {
-        getProtocol({ name: 'foo.node.dc1.consul' }, (err, protocol) => {
-          assert.that(err).is.falsy();
-          assert.that(protocol).is.equalTo('http');
-          restore();
-          done();
-        });
+      const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
+
+      getProtocol({ name: 'foo.node.dc1.consul' }, (err, protocol) => {
+        assert.that(err).is.falsy();
+        assert.that(protocol).is.equalTo('http');
+        restore();
+        done();
       });
     });
 
     test('returns \'https\' if target is another host.', (done) => {
-      nodeenv('TLS_UNPROTECTED', 'loopback', (restore) => {
-        getProtocol({ name: 'other-host.node.dc1.consul' }, (err, protocol) => {
-          assert.that(err).is.falsy();
-          assert.that(protocol).is.equalTo('https');
-          restore();
-          done();
-        });
+      const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
+
+      getProtocol({ name: 'other-host.node.dc1.consul' }, (err, protocol) => {
+        assert.that(err).is.falsy();
+        assert.that(protocol).is.equalTo('https');
+        restore();
+        done();
       });
     });
   });
 
   suite('with TLS_UNPROTECTED set to an unknown value', () => {
     test('returns an error.', (done) => {
-      nodeenv('TLS_UNPROTECTED', 'foobar', (restore) => {
-        getProtocol({ name: 'foo.node.dc1.consul' }, (err) => {
-          assert.that(err).is.not.falsy();
-          assert.that(err.message).is.equalTo('TLS_UNPROTECTED invalid.');
-          restore();
-          done();
-        });
+      const restore = nodeenv('TLS_UNPROTECTED', 'foobar');
+
+      getProtocol({ name: 'foo.node.dc1.consul' }, (err) => {
+        assert.that(err).is.not.falsy();
+        assert.that(err.message).is.equalTo('TLS_UNPROTECTED invalid.');
+        restore();
+        done();
       });
     });
   });
