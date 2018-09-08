@@ -10,9 +10,7 @@
   "license": "MIT",
   "scripts": {
     "bot": "bot",
-    "release": "bot release && npm publish",
-    "release-minor": "bot release --type minor && npm publish",
-    "release-major": "bot release --type major && npm publish",
+    "release": "semantic-release --branch ${CIRCLE_BRANCH}",
     "test": "bot test-units",
     "coverage": "istanbul cover _mocha -- --recursive --ui tdd ",
     "report": "npm run coverage && if [[ $OSTYPE == darwin* ]]; then open=open; else open=xdg-open; fi && $open coverage/lcov-report/index.html"
@@ -36,6 +34,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/sealsystems/node-connect-service.git"
+  },
+  "release": {
+    "extends": "@sealsystems/semantic-release-config/node-module"
   },
   "publishConfig": {
     "access": "public"
