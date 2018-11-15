@@ -18,16 +18,16 @@
   "main": "lib/connectService.js",
   "dependencies": {
     "getenv": "0.7.0",
-    "@sealsystems/consul": "3.5.12",
-    "@sealsystems/log": "1.2.4",
-    "@sealsystems/tlscert": "2.0.1"
+    "@sealsystems/consul": "4.0.1",
+    "@sealsystems/log": "1.3.1",
+    "@sealsystems/tlscert": "2.1.1"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "1.1.1",
-    "assertthat": "1.0.0",
-    "nock": "9.2.3",
+    "assertthat": "2.0.0",
+    "nock": "10.0.2",
     "nodeenv": "1.0.0",
-    "proxyquire": "2.0.0",
+    "proxyquire": "2.1.0",
     "roboter": "0.16.0",
     "roboter-server": "0.16.0"
   },
