@@ -39,7 +39,7 @@ suite('getProtocol', () => {
     }).is.throwingAsync('foo');
   });
 
-  suite('with TLS_UNPROTECTED set to \'none\'', () => {
+  suite('with TLS_UNPROTECTED set to \'none\'', async () => {
     test('returns \'https\'.', async () => {
       const restore = nodeenv('TLS_UNPROTECTED', 'none');
       const protocol = await getProtocol({ name: 'foo.node.dc1.consul' });
@@ -49,7 +49,7 @@ suite('getProtocol', () => {
     });
   });
 
-  suite('with TLS_UNPROTECTED set to \'world\'', () => {
+  suite('with TLS_UNPROTECTED set to \'world\'', async () => {
     test('returns \'http\'.', async () => {
       const restore = nodeenv('TLS_UNPROTECTED', 'world');
       const protocol = await getProtocol({ name: 'foo.node.dc1.consul' });
@@ -59,7 +59,7 @@ suite('getProtocol', () => {
     });
   });
 
-  suite('with TLS_UNPROTECTED set to \'loopback\'', () => {
+  suite('with TLS_UNPROTECTED set to \'loopback\'', async () => {
     test('returns \'http\' if target is the same host.', async () => {
       const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
       const protocol = await getProtocol({ name: 'foo.node.dc1.consul' });
@@ -77,7 +77,7 @@ suite('getProtocol', () => {
     });
   });
 
-  suite('with TLS_UNPROTECTED set to an unknown value', () => {
+  suite('with TLS_UNPROTECTED set to an unknown value', async () => {
     test('returns an error.', async () => {
       const restore = nodeenv('TLS_UNPROTECTED', 'foobar');
 

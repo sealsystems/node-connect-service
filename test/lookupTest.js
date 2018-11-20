@@ -2,6 +2,7 @@
 'use strict';
 
 const assert = require('assertthat');
+const nodeenv = require('nodeenv');
 const proxyquire = require('proxyquire');
 
 let errLookup;
@@ -74,5 +75,15 @@ suite('lookup', () => {
     await assert.that(async () => {
       await lookup('target.node.dc1.consul');
     }).is.throwingAsync('foobar');
+  });
+
+  suite('cloud service discovery', () => {
+    test('directly uses service name.', async () => {
+      const restore = nodeenv('SERVICE_DISCOVERY', 'cloud');
+      const result = await lookup('bodyscanner');
+
+      assert.that(result).is.equalTo('bodyscanner');
+      restore();
+    });
   });
 });
