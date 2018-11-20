@@ -1,22 +1,22 @@
-# seal-connect-service
+# @sealsystems/connect-service
 
-[![CircleCI](https://circleci.com/gh/sealsystems/seal-connect-service.svg?style=svg)](https://circleci.com/gh/sealsystems/seal-connect-service)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/d7djlcycod4jhj4i?svg=true)](https://ci.appveyor.com/project/Plossys/seal-connect-service)
+[![CircleCI](https://circleci.com/gh/sealsystems/node-connect-service.svg?style=svg)](https://circleci.com/gh/sealsystems/node-connect-service)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/4s0wchxggjqtfgp3?svg=true)](https://ci.appveyor.com/project/Plossys/node-connect-service)
 
 Connects to a service with given host name and port number.
 
 ## Installation
 
 ```bash
-$ npm install seal-connect-service
+$ npm install @sealsystems/connect-service
 ```
 
 ## Quick start
 
-First you need to add a reference to seal-connect-service within your application.
+First you need to add a reference to @sealsystems/connect-service within your application.
 
 ```javascript
-const connectService = require('seal-connect-service');
+const connectService = require('@sealsystems/connect-service');
 ```
 
 **Please note:** A connection to consul must already exist before you can use the module.
@@ -24,24 +24,20 @@ const connectService = require('seal-connect-service');
 To create a HTTP/HTTPS connection to an instance of a service (e.g. `myService`), use:
 
 ```javascript
-connectService({
+const client = await connectService({
   service: 'myService',
   path: '/job'
 }, {
   name: 'hostname',
   port: 3000
-}, (err, client) => {
-  if (!err) {
-    throw new Error('An error occurred while connecting to the service.');
-  }
-
-  client.on('response', (response) => {
-    console.log(`Response status: ${response.statusCode}`);
-  });
-
-  client.write('Hello service!');
-  client.end();
 });
+
+client.on('response', (response) => {
+  console.log(`Response status: ${response.statusCode}`);
+});
+
+client.write('Hello service!');
+client.end();
 ```
 
 The first parameter is an `options` object that can contain the following properties:
@@ -75,11 +71,11 @@ const host = {
 };
 ```
 
-The `callback` function given as the third parameter will be called when a connection to the service could be established. In this case, the `err` parameter is `null` and the `req` parameter contains a [http.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest) object for further use. Otherwise, the `err` parameter contains an `Error` object with further details about the problem.
+The return value `client` contains a [http.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest) object for further use.
 
 ## HTTP and HTTPS
 
-The protocol used for a connection depends on the target (local or remote) and the value of the environment variable TLS_UNPROTECTED. The TLS certificates provided by `seal-tlscert` will be used for HTTPS connections. It is not possible to override the chosen protocol.
+The protocol used for a connection depends on the target (local or remote) and the value of the environment variable TLS_UNPROTECTED. The TLS certificates provided by `@sealsystems/tlscert` will be used for HTTPS connections. It is not possible to override the chosen protocol.
 
 ## Running the build
 
