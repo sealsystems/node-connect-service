@@ -23,7 +23,7 @@
     "getenv": "0.7.0",
     "@sealsystems/consul": "4.0.1",
     "@sealsystems/log": "2.1.0",
-    "@sealsystems/tlscert": "2.1.2"
+    "@sealsystems/tlscert": "git+https://b190bb194b54549c14c9b4b219bcdead6d1ea9ab:x-oauth-basic@github.com/sealsystems/node-tlscert.git#PLS-431"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "3.5.3",
