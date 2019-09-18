@@ -7,7 +7,7 @@ let protocolError;
 let connectError;
 let connectedServices;
 const connectService = proxyquire('../lib/connectService', {
-  async './connect' (options, host) {
+  async './connect'(options, host) {
     if (connectError) {
       throw connectError;
     }
@@ -15,7 +15,7 @@ const connectService = proxyquire('../lib/connectService', {
 
     return `This is a ${options.protocol} client.`;
   },
-  async './getProtocol' () {
+  async './getProtocol'() {
     if (protocolError) {
       throw protocolError;
     }
@@ -36,41 +36,57 @@ suite('connectService', () => {
   });
 
   test('throws an error if options is missing.', async () => {
-    await assert.that(async () => {
-      await connectService();
-    }).is.throwingAsync('Options are missing.');
+    await assert
+      .that(async () => {
+        await connectService();
+      })
+      .is.throwingAsync('Options are missing.');
   });
 
   test('throws an error if service name is missing.', async () => {
-    await assert.that(async () => {
-      await connectService({});
-    }).is.throwingAsync('Service name is missing.');
+    await assert
+      .that(async () => {
+        await connectService({});
+      })
+      .is.throwingAsync('Service name is missing.');
   });
 
   test('throws an error if host is missing.', async () => {
-    await assert.that(async () => {
-      await connectService({
-        service: 'test service'
-      });
-    }).is.throwingAsync('Host is missing.');
+    await assert
+      .that(async () => {
+        await connectService({
+          service: 'test service'
+        });
+      })
+      .is.throwingAsync('Host is missing.');
   });
 
   test('throws an error if host.name is missing.', async () => {
-    await assert.that(async () => {
-      await connectService({
-        service: 'test service'
-      }, {});
-    }).is.throwingAsync('Host.name is missing.');
+    await assert
+      .that(async () => {
+        await connectService(
+          {
+            service: 'test service'
+          },
+          {}
+        );
+      })
+      .is.throwingAsync('Host.name is missing.');
   });
 
   test('throws an error if host.port is missing.', async () => {
-    await assert.that(async () => {
-      await connectService({
-        service: 'test service'
-      }, {
-        name: 'bla'
-      });
-    }).is.throwingAsync('Host.port is missing.');
+    await assert
+      .that(async () => {
+        await connectService(
+          {
+            service: 'test service'
+          },
+          {
+            name: 'bla'
+          }
+        );
+      })
+      .is.throwingAsync('Host.port is missing.');
   });
 
   test('throws an error if getProtocol fails.', async () => {
@@ -81,12 +97,17 @@ suite('connectService', () => {
 
     protocolError = new Error('hopperla');
 
-    await assert.that(async () => {
-      await connectService({
-        service: 'test service',
-        path: '/test/path'
-      }, host);
-    }).is.throwingAsync('hopperla');
+    await assert
+      .that(async () => {
+        await connectService(
+          {
+            service: 'test service',
+            path: '/test/path'
+          },
+          host
+        );
+      })
+      .is.throwingAsync('hopperla');
 
     assert.that(connectedServices.length).is.equalTo(0);
   });
@@ -99,12 +120,17 @@ suite('connectService', () => {
 
     connectError = new Error('foo');
 
-    await assert.that(async () => {
-      await connectService({
-        service: 'test service',
-        path: '/test/path'
-      }, host);
-    }).is.throwingAsync('foo');
+    await assert
+      .that(async () => {
+        await connectService(
+          {
+            service: 'test service',
+            path: '/test/path'
+          },
+          host
+        );
+      })
+      .is.throwingAsync('foo');
 
     assert.that(connectedServices.length).is.equalTo(0);
   });
@@ -115,10 +141,13 @@ suite('connectService', () => {
       port: '1234'
     };
 
-    const client = await connectService({
-      service: 'test service',
-      path: '/test/path'
-    }, host);
+    const client = await connectService(
+      {
+        service: 'test service',
+        path: '/test/path'
+      },
+      host
+    );
 
     assert.that(client).is.equalTo('This is a http client.');
     assert.that(connectedServices.length).is.equalTo(1);
