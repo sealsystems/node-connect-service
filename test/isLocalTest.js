@@ -7,7 +7,7 @@ let errGetHostname;
 
 const isLocal = proxyquire('../lib/isLocal', {
   '@sealsystems/consul': {
-    async getHostname () {
+    async getHostname() {
       if (errGetHostname) {
         throw errGetHostname;
       }
@@ -27,9 +27,11 @@ suite('isLocal', () => {
   });
 
   test('throws an error if hostname is missing.', async () => {
-    await assert.that(async () => {
-      await isLocal();
-    }).is.throwingAsync('Hostname is missing.');
+    await assert
+      .that(async () => {
+        await isLocal();
+      })
+      .is.throwingAsync('Hostname is missing.');
   });
 
   test('returns true if target host is the local host.', async () => {
@@ -47,8 +49,10 @@ suite('isLocal', () => {
   test('returns an error if getting local hostname from consul failed.', async () => {
     errGetHostname = new Error('foobar');
 
-    await assert.that(async () => {
-      await isLocal('target.node.dc1.consul');
-    }).is.throwingAsync('foobar');
+    await assert
+      .that(async () => {
+        await isLocal('target.node.dc1.consul');
+      })
+      .is.throwingAsync('foobar');
   });
 });

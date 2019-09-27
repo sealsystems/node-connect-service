@@ -1,4 +1,3 @@
-
 'use strict';
 
 const assert = require('assertthat');
@@ -9,7 +8,7 @@ let errLookup;
 let errIsLocal;
 
 const lookup = proxyquire('../lib/lookup', {
-  async './isLocal' (targethost) {
+  async './isLocal'(targethost) {
     if (errIsLocal) {
       throw errIsLocal;
     }
@@ -17,7 +16,7 @@ const lookup = proxyquire('../lib/lookup', {
     return targethost === 'foo.node.dc1.consul';
   },
   '@sealsystems/consul': {
-    async lookup () {
+    async lookup() {
       if (errLookup) {
         throw errLookup;
       }
@@ -38,9 +37,11 @@ suite('lookup', () => {
   });
 
   test('throws an error if hostname is missing.', async () => {
-    await assert.that(async () => {
-      await lookup();
-    }).is.throwingAsync('Hostname is missing.');
+    await assert
+      .that(async () => {
+        await lookup();
+      })
+      .is.throwingAsync('Hostname is missing.');
   });
 
   test('uses @sealsystems/consul to lookup ip address.', async () => {
@@ -64,17 +65,21 @@ suite('lookup', () => {
   test('throws an error if testing for localhost failed.', async () => {
     errIsLocal = new Error('foobar');
 
-    await assert.that(async () => {
-      await lookup('target.node.dc1.consul');
-    }).is.throwingAsync('foobar');
+    await assert
+      .that(async () => {
+        await lookup('target.node.dc1.consul');
+      })
+      .is.throwingAsync('foobar');
   });
 
   test('throws an error if consul failed to look up the ip.', async () => {
     errLookup = new Error('foobar');
 
-    await assert.that(async () => {
-      await lookup('target.node.dc1.consul');
-    }).is.throwingAsync('foobar');
+    await assert
+      .that(async () => {
+        await lookup('target.node.dc1.consul');
+      })
+      .is.throwingAsync('foobar');
   });
 
   suite('cloud service discovery', () => {

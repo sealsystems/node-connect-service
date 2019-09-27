@@ -13,9 +13,11 @@ suite('getDefaultAgent', () => {
   });
 
   test('throws an error if protocol is missing.', async () => {
-    assert.that(() => {
-      getDefaultAgent();
-    }).is.throwing('Protocol is missing.');
+    assert
+      .that(() => {
+        getDefaultAgent();
+      })
+      .is.throwing('Protocol is missing.');
   });
 
   test('returns the http agent.', async () => {
