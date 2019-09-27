@@ -1,3 +1,21 @@
+## 2.2.0 (2019-09-27)
+
+### Features
+
+
+#### PLS-431 ([6fd27e8](https://github.com/sealsystems/node-connect-service/commit/6fd27e8))
+
+- Removed roboter
+ - Added dependabot
+ - Updated GitHub Pull Request template
+ - Updated CircleCI config
+ - Updated appveyor config
+ - Updated dependencies
+ - Fixed linting
+
+
+---
+
 ## 2.1.3 (2018-11-20)
 
 
