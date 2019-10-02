@@ -16,3 +16,7 @@ temp/
 
 # MacOS
 .DS_Store
+
+# Misc
+*.stat
+*.log
