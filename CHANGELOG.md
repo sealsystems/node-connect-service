@@ -1,3 +1,17 @@
+## 2.2.2 (2019-10-08)
+
+### Chores
+
+
+#### bump [@sealsystems](https://github.com/sealsystems)/tlscert from 2.2.0 to 2.2.1 ([b95caa7](https://github.com/sealsystems/node-connect-service/commit/b95caa7))
+
+Bumps @sealsystems/tlscert from 2.2.0 to 2.2.1.
+
+Signed-off-by: dependabot-preview[bot] <support@dependabot.com>
+
+
+---
+
 ## 2.2.1 (2019-10-08)
 
 ### Chores

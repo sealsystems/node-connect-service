@@ -1,6 +1,6 @@
 {
   "name": "@sealsystems/connect-service",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Connects to a service.",
   "author": {
     "name": "SEAL Systems AG",
@@ -23,7 +23,7 @@
   "dependencies": {
     "@sealsystems/consul": "git+https://git@github.com/sealsystems/node-consul.git#PLS-431",
     "@sealsystems/log": "2.2.0",
-    "@sealsystems/tlscert": "git+https://git@github.com/sealsystems/node-tlscert.git#PLS-431",
+    "@sealsystems/tlscert": "2.3.0",
     "getenv": "0.7.0"
   },
   "devDependencies": {
