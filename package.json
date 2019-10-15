@@ -23,7 +23,7 @@
     "getenv": "0.7.0",
     "@sealsystems/consul": "4.1.0",
     "@sealsystems/log": "2.2.0",
-    "@sealsystems/tlscert": "2.2.1"
+    "@sealsystems/tlscert": "2.3.0"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "3.6.0",
