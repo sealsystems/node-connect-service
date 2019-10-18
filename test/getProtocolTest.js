@@ -26,11 +26,13 @@ suite('getProtocol', () => {
   });
 
   test('throws an error if options are missing.', async () => {
+    const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
     await assert
       .that(async () => {
         await getProtocol();
       })
       .is.throwingAsync('Options are missing.');
+    restore();
   });
 
   test('returns an error if isLocal failed.', async () => {
