@@ -16,14 +16,15 @@
     "test": "test-run",
     "test:coverage": "test-coverage",
     "test:coverage:check": "test-coverage-check",
-    "test:report": "test-report"
+    "test:report": "test-report",
+    "licenses": "license-checker --production --csv"
   },
   "main": "lib/connectService.js",
   "dependencies": {
-    "getenv": "0.7.0",
-    "@sealsystems/consul": "4.1.0",
+    "@sealsystems/consul": "5.1.0",
     "@sealsystems/log": "2.2.0",
-    "@sealsystems/tlscert": "2.3.0"
+    "@sealsystems/tlscert": "2.3.0",
+    "getenv": "0.7.0"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "3.6.0",
