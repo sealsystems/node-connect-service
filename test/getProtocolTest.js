@@ -36,6 +36,7 @@ suite('getProtocol', () => {
   });
 
   test('returns an error if isLocal failed.', async () => {
+    const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
     errIsLocal = new Error('foo');
 
     await assert
@@ -43,6 +44,7 @@ suite('getProtocol', () => {
         await getProtocol({});
       })
       .is.throwingAsync('foo');
+    restore();
   });
 
   suite("with TLS_UNPROTECTED set to 'none'", () => {
