@@ -1,3 +1,34 @@
+## 3.0.0 (2019-11-12)
+
+### Features
+
+
+#### Removed requires of consul, use options parameter ([8ec0224](https://github.com/sealsystems/node-connect-service/commit/8ec0224))
+
+
+
+### BREAKING CHANGES
+
+#### Interface changed: consul is now part of options parameter.
+
+Examples for connectService call:
+
+```javascript
+const consul = require('@sealsystems/consul');
+
+consul.connect(...);
+
+connectService({
+  consul,
+  service: 'serviceName'
+}, {
+  host: '...',
+  port: 123
+});
+```
+
+---
+
 ## 2.3.0 (2019-10-18)
 
 ### Features
