@@ -6,8 +6,9 @@ const proxyquire = require('proxyquire');
 
 let errIsLocal;
 
+const consul = {};
 const getProtocol = proxyquire('../lib/getProtocol', {
-  async './isLocal'(targetHost) {
+  async './isLocal'(localconsul, targetHost) {
     if (errIsLocal) {
       throw errIsLocal;
     }
@@ -25,13 +26,23 @@ suite('getProtocol', () => {
     assert.that(getProtocol).is.ofType('function');
   });
 
-  test('throws an error if options are missing.', async () => {
+  test('throws an error if consul is missing.', async () => {
     const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
     await assert
       .that(async () => {
         await getProtocol();
       })
-      .is.throwingAsync('Options are missing.');
+      .is.throwingAsync('Consul is missing.');
+    restore();
+  });
+
+  test('throws an error if host is missing.', async () => {
+    const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
+    await assert
+      .that(async () => {
+        await getProtocol(consul);
+      })
+      .is.throwingAsync('Host is missing.');
     restore();
   });
 
@@ -41,7 +52,7 @@ suite('getProtocol', () => {
 
     await assert
       .that(async () => {
-        await getProtocol({});
+        await getProtocol(consul, {});
       })
       .is.throwingAsync('foo');
     restore();
@@ -50,7 +61,7 @@ suite('getProtocol', () => {
   suite("with TLS_UNPROTECTED set to 'none'", () => {
     test("returns 'https'.", async () => {
       const restore = nodeenv('TLS_UNPROTECTED', 'none');
-      const protocol = await getProtocol({ name: 'foo.node.dc1.consul' });
+      const protocol = await getProtocol(consul, { name: 'foo.node.dc1.consul' });
 
       assert.that(protocol).is.equalTo('https');
       restore();
@@ -60,7 +71,7 @@ suite('getProtocol', () => {
   suite("with TLS_UNPROTECTED set to 'world'", () => {
     test("returns 'http'.", async () => {
       const restore = nodeenv('TLS_UNPROTECTED', 'world');
-      const protocol = await getProtocol({ name: 'foo.node.dc1.consul' });
+      const protocol = await getProtocol(consul, { name: 'foo.node.dc1.consul' });
 
       assert.that(protocol).is.equalTo('http');
       restore();
@@ -70,7 +81,7 @@ suite('getProtocol', () => {
   suite("with TLS_UNPROTECTED set to 'loopback'", () => {
     test("returns 'http' if target is the same host.", async () => {
       const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
-      const protocol = await getProtocol({ name: 'foo.node.dc1.consul' });
+      const protocol = await getProtocol(consul, { name: 'foo.node.dc1.consul' });
 
       assert.that(protocol).is.equalTo('http');
       restore();
@@ -78,7 +89,7 @@ suite('getProtocol', () => {
 
     test("returns 'https' if target is another host.", async () => {
       const restore = nodeenv('TLS_UNPROTECTED', 'loopback');
-      const protocol = await getProtocol({ name: 'other-host.node.dc1.consul' });
+      const protocol = await getProtocol(consul, { name: 'other-host.node.dc1.consul' });
 
       assert.that(protocol).is.equalTo('https');
       restore();
@@ -91,7 +102,7 @@ suite('getProtocol', () => {
 
       await assert
         .that(async () => {
-          await getProtocol({ name: 'foo.node.dc1.consul' });
+          await getProtocol(consul, { name: 'foo.node.dc1.consul' });
         })
         .is.throwingAsync('TLS_UNPROTECTED invalid.');
 
