@@ -8,6 +8,7 @@ let connectError;
 let connectedServices;
 const connectService = proxyquire('../lib/connectService', {
   async './connect'(options, host) {
+    assert.that(options.consul).is.not.undefined();
     if (connectError) {
       throw connectError;
     }
@@ -15,7 +16,9 @@ const connectService = proxyquire('../lib/connectService', {
 
     return `This is a ${options.protocol} client.`;
   },
-  async './getProtocol'() {
+  async './getProtocol'(consul, host) {
+    assert.that(consul).is.not.undefined();
+    assert.that(host).is.not.undefined();
     if (protocolError) {
       throw protocolError;
     }
@@ -89,6 +92,22 @@ suite('connectService', () => {
       .is.throwingAsync('Host.port is missing.');
   });
 
+  test('throws an error if consul is missing.', async () => {
+    await assert
+      .that(async () => {
+        await connectService(
+          {
+            service: 'test service'
+          },
+          {
+            name: 'dort',
+            port: '0815'
+          }
+        );
+      })
+      .is.throwingAsync('Consul is missing.');
+  });
+
   test('throws an error if getProtocol fails.', async () => {
     const host = {
       name: 'dort',
@@ -101,6 +120,7 @@ suite('connectService', () => {
       .that(async () => {
         await connectService(
           {
+            consul: {},
             service: 'test service',
             path: '/test/path'
           },
@@ -124,6 +144,7 @@ suite('connectService', () => {
       .that(async () => {
         await connectService(
           {
+            consul: {},
             service: 'test service',
             path: '/test/path'
           },
@@ -143,6 +164,7 @@ suite('connectService', () => {
 
     const client = await connectService(
       {
+        consul: {},
         service: 'test service',
         path: '/test/path'
       },

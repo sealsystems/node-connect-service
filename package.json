@@ -21,16 +21,15 @@
   },
   "main": "lib/connectService.js",
   "dependencies": {
-    "@sealsystems/consul": "5.1.0",
     "@sealsystems/log": "2.2.0",
     "@sealsystems/tlscert": "2.3.0",
-    "getenv": "0.7.0"
+    "getenv": "1.0.0"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "3.6.0",
     "@sealsystems/mocha": "4.1.1",
     "@sealsystems/semantic-release": "4.0.13",
-    "nock": "10.0.6",
+    "nock": "11.7.0",
     "nodeenv": "1.1.0",
     "proxyquire": "2.1.3"
   },

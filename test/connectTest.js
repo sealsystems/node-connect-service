@@ -7,7 +7,9 @@ const proxyquire = require('proxyquire');
 let errLookup;
 let lookupResult;
 const connect = proxyquire('../lib/connect', {
-  async './lookup'() {
+  async './lookup'(localconsul, host) {
+    assert.that(localconsul).is.not.undefined();
+    assert.that(host).is.not.undefined();
     if (errLookup) {
       throw errLookup;
     }
@@ -110,6 +112,7 @@ suite('connect', () => {
       .that(async () => {
         await connect(
           {
+            consul: {},
             protocol: 'http',
             service: 'test service'
           },
@@ -127,6 +130,7 @@ suite('connect', () => {
       .that(async () => {
         await connect(
           {
+            consul: {},
             protocol: 'http',
             service: 'test service'
           },
@@ -146,6 +150,7 @@ suite('connect', () => {
 
     const client = await connect(
       {
+        consul: {},
         path: '/test/path',
         protocol: 'http',
         service: 'test service'
@@ -175,6 +180,7 @@ suite('connect', () => {
 
     const client = await connect(
       {
+        consul: {},
         path: '/test/path',
         protocol: 'http',
         service: 'test service'
@@ -204,6 +210,7 @@ suite('connect', () => {
 
     const client = await connect(
       {
+        consul: {},
         path: '/test/path',
         protocol: 'https',
         service: 'test service'
@@ -233,6 +240,7 @@ suite('connect', () => {
 
     const client = await connect(
       {
+        consul: {},
         protocol: 'http',
         service: 'test service'
       },
@@ -262,6 +270,7 @@ suite('connect', () => {
 
       const client = await connect(
         {
+          consul: {},
           path: '/wrong/path',
           protocol: 'http',
           service: 'test service'
@@ -291,6 +300,7 @@ suite('connect', () => {
 
       const client = await connect(
         {
+          consul: {},
           path: '/test/path',
           protocol: 'http',
           service: 'test service'
@@ -302,7 +312,6 @@ suite('connect', () => {
       );
 
       assert.that(client.requestOptions).is.ofType('object');
-      assert.that(client.requestOptions.proto).is.equalTo('http');
       assert.that(client.requestOptions.hostname).is.equalTo('127.0.0.1');
       assert.that(client.requestOptions.port).is.equalTo(3000);
       assert.that(client.requestOptions.path).is.equalTo('/test/path');
