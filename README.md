@@ -24,9 +24,13 @@ const connectService = require('@sealsystems/connect-service');
 To create a HTTP/HTTPS connection to an instance of a service (e.g. `myService`), use:
 
 ```javascript
+const consul = require('@sealsystems/consul');
+consul.connect(...);
+
 const client = await connectService({
   service: 'myService',
-  path: '/job'
+  path: '/job',
+  consul
 }, {
   name: 'hostname',
   port: 3000
@@ -42,12 +46,13 @@ client.end();
 
 The first parameter is an `options` object that can contain the following properties:
 
-| property  | type            | description                        |
-|-----------|-----------------|------------------------------------|
-| service   | required string | Name of the service to access      |
-| headers   | optional object | Additional HTTP/HTTPS headers      |
-| method    | optional string | HTTP/HTTPS method, default `POST`  |
-| path      | optional string | URL-path to access, default `/`    |
+| property  | type            | description                         |
+|-----------|-----------------|-------------------------------------|
+| service   | required string | Name of the service to access       |
+| consul    | required object | Initialized instance of node-consul |
+| headers   | optional object | Additional HTTP/HTTPS headers       |
+| method    | optional string | HTTP/HTTPS method, default `POST`   |
+| path      | optional string | URL-path to access, default `/`     |
 
 Here is an example of a more complete `options` object:
 
@@ -58,7 +63,8 @@ const options = {
   },
   method: 'POST',
   path: '/url/path',
-  service: 'myService'
+  service: 'myService',
+  consul
 };
 ```
 
