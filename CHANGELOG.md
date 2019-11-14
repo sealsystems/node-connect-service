@@ -1,3 +1,14 @@
+## 3.0.1 (2019-11-14)
+
+### Chores
+
+
+#### updated deps ([139469b](https://github.com/sealsystems/node-connect-service/commit/139469b))
+
+
+
+---
+
 ## 3.0.0 (2019-11-12)
 
 ### Features
