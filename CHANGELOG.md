@@ -1,3 +1,14 @@
+## 3.0.2 (2020-03-09)
+
+### Chores
+
+
+#### Switched to github actions. ([568883f](https://github.com/sealsystems/node-connect-service/commit/568883f))
+
+
+
+---
+
 ## 3.0.1 (2019-11-14)
 
 ### Chores
