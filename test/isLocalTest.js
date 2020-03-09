@@ -16,7 +16,7 @@ const consul = {
 const isLocal = require('../lib/isLocal');
 
 suite('isLocal', () => {
-  setup(() => {
+  setup(async () => {
     errGetHostname = null;
   });
 

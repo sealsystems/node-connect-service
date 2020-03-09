@@ -26,7 +26,7 @@ const lookup = proxyquire('../lib/lookup', {
 });
 
 suite('lookup', () => {
-  setup(() => {
+  setup(async () => {
     errIsLocal = null;
     errLookup = null;
   });

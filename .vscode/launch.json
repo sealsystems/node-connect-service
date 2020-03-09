@@ -18,13 +18,10 @@
           "--recursive",
           "${workspaceFolder}/test"
         ],
-        "internalConsoleOptions": "openOnSessionStart"
-      },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/lib/connectService.js"
-        }
+        "internalConsoleOptions": "openOnSessionStart",
+        "skipFiles": [
+          "<node_internals>/**"
+        ]
+      }
     ]
 }
