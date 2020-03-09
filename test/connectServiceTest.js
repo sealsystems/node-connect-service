@@ -28,7 +28,7 @@ const connectService = proxyquire('../lib/connectService', {
 });
 
 suite('connectService', () => {
-  setup(() => {
+  setup(async () => {
     connectError = null;
     connectedServices = [];
     protocolError = null;

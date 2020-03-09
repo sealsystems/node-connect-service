@@ -18,7 +18,7 @@ const getProtocol = proxyquire('../lib/getProtocol', {
 });
 
 suite('getProtocol', () => {
-  setup(() => {
+  setup(async () => {
     errIsLocal = null;
   });
 

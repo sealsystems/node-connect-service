@@ -19,7 +19,7 @@ const connect = proxyquire('../lib/connect', {
 });
 
 suite('connect', () => {
-  setup(() => {
+  setup(async () => {
     errLookup = null;
     lookupResult = '127.0.0.1';
   });
