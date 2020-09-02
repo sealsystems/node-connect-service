@@ -1,3 +1,18 @@
+## 3.0.3 (2020-09-02)
+
+### Chores
+
+
+bump [@sealsystems](https://github.com/sealsystems)/log from 2.2.0 to 2.2.1 ([#48](https://github.com/sealsystems/node-connect-service/issues/48)) ([2e330d0](https://github.com/sealsystems/node-connect-service/commit/2e330d0))
+
+bump [@sealsystems](https://github.com/sealsystems)/log from 2.2.1 to 2.2.2 ([#66](https://github.com/sealsystems/node-connect-service/issues/66)) ([92d0e16](https://github.com/sealsystems/node-connect-service/commit/92d0e16))
+
+bump [@sealsystems](https://github.com/sealsystems)/tlscert from 2.3.0 to 2.3.7 ([#49](https://github.com/sealsystems/node-connect-service/issues/49)) ([dbf3132](https://github.com/sealsystems/node-connect-service/commit/dbf3132))
+
+bump [@sealsystems](https://github.com/sealsystems)/tlscert from 2.3.7 to 2.3.8 ([#67](https://github.com/sealsystems/node-connect-service/issues/67)) ([cb4487d](https://github.com/sealsystems/node-connect-service/commit/cb4487d))
+
+removed unnecessary log message and updated deps ([c49b1d7](https://github.com/sealsystems/node-connect-service/commit/c49b1d7))
+
 ## 3.0.2 (2020-03-09)
 
 ### Chores
