@@ -1,3 +1,15 @@
+## 3.0.4 (2020-10-08)
+
+### Bug Fixes
+
+
+#### Check for localhost and 127.0.0.1 ([c73d631](https://github.com/sealsystems/node-connect-service/commit/c73d631))
+
+Use the correct protocol if we set SERVICE_URL of a service to `localhost` or `127.0.0.1`.
+
+
+---
+
 ## 3.0.3 (2020-09-02)
 
 ### Chores
