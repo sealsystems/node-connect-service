@@ -40,6 +40,18 @@ suite('isLocal', () => {
       .is.throwingAsync('Hostname is missing.');
   });
 
+  test('returns true if target host is "127.0.0.1".', async () => {
+    const isLocalhost = await isLocal(consul, '127.0.0.1');
+
+    assert.that(isLocalhost).is.equalTo(true);
+  });
+
+  test('returns true if target host is literally "localhost".', async () => {
+    const isLocalhost = await isLocal(consul, 'localhost');
+
+    assert.that(isLocalhost).is.equalTo(true);
+  });
+
   test('returns true if target host is the local host.', async () => {
     const isLocalhost = await isLocal(consul, 'foo.node.dc1.consul');
 
