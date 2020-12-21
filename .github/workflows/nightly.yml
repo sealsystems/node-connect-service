@@ -1,3 +1,5 @@
+name: Nightly
+
 on:
   schedule:
     - cron: "30 2 * * *"
@@ -9,10 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 12.13.1
+      - name: Use Node.js 12.19.0
         uses: actions/setup-node@v1
         with:
-          node-version: 12.13.1
+          node-version: 12.19.0
           registry-url: https://npm.pkg.github.com/
           scope: "@sealsystems"
 
@@ -23,7 +25,7 @@ jobs:
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: ~/.npm
-          key: ${{ runner.os }}-${{ env.cache-name }}-12.13.1-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-${{ env.cache-name }}-12.19.0-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
         run: npm i
@@ -38,7 +40,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.CI_TOKEN }}
 
       - name: Update build config
-        run: npx yo seal-node:service-sealsystems --force
+        run: npx yo @sealsystems/seal-node:oss-module --force
         env:
           # Use personal access token, must be set for *each step*
           NODE_AUTH_TOKEN: ${{ secrets.CI_TOKEN }}
@@ -54,6 +56,6 @@ jobs:
           commit-message: Update build configuration
           committer: CI Build <com.git@sealsystems.de>
           author: CI Build <com.git@sealsystems.de>
-          reviewers:
+          reviewers: 
           team-reviewers: com-infrastructure
           token: ${{ secrets.CI_TOKEN }}
