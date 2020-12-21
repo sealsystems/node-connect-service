@@ -1,3 +1,10 @@
+## 3.0.5 (2020-12-21)
+
+### Chores
+
+
+Trigger release ([a256090](https://github.com/sealsystems/node-connect-service/commit/a256090))
+
 ## 3.0.4 (2020-10-08)
 
 ### Bug Fixes
