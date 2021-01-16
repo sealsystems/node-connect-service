@@ -1,3 +1,10 @@
+## 3.0.7 (2021-01-16)
+
+### Chores
+
+
+Update build config ([ef8f7ff](https://github.com/sealsystems/node-connect-service/commit/ef8f7ff))
+
 ## 3.0.6 (2020-12-26)
 
 ### Chores
