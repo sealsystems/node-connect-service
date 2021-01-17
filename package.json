@@ -22,7 +22,7 @@
   "main": "lib/connectService.js",
   "dependencies": {
     "@sealsystems/log": "2.2.5",
-    "@sealsystems/tlscert": "2.3.14",
+    "@sealsystems/tlscert": "2.3.15",
     "getenv": "1.0.0"
   },
   "devDependencies": {
