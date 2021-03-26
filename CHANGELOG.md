@@ -1,3 +1,10 @@
+## 3.0.12 (2021-03-26)
+
+### Chores
+
+
+bump [@sealsystems](https://github.com/sealsystems)/tlscert from 2.3.16 to 2.3.17 ([#118](https://github.com/sealsystems/node-connect-service/issues/118)) ([1ed60a1](https://github.com/sealsystems/node-connect-service/commit/1ed60a1))
+
 ## 3.0.11 (2021-03-26)
 
 ### Chores
