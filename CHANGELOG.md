@@ -1,3 +1,10 @@
+## 3.0.16 (2021-05-31)
+
+### Chores
+
+
+bump [@sealsystems](https://github.com/sealsystems)/log from 2.3.2 to 2.3.3 ([#135](https://github.com/sealsystems/node-connect-service/issues/135)) ([0f4b768](https://github.com/sealsystems/node-connect-service/commit/0f4b768))
+
 ## 3.0.15 (2021-03-26)
 
 ### Chores
