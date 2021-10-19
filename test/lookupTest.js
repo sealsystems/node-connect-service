@@ -16,12 +16,14 @@ const consul = {
 };
 
 const lookup = proxyquire('../lib/lookup', {
-  async './isLocal'(localconsul, targethost) {
-    if (errIsLocal) {
-      throw errIsLocal;
-    }
+  '@sealsystems/service-protocol': {
+    async isLocal(localconsul, targethost) {
+      if (errIsLocal) {
+        throw errIsLocal;
+      }
 
-    return targethost === 'foo.node.dc1.consul';
+      return targethost === 'foo.node.dc1.consul';
+    }
   }
 });
 
