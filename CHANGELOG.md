@@ -1,3 +1,10 @@
+## 3.0.18 (2021-10-20)
+
+### Chores
+
+
+Extracted protocol decision into own module ([8a405bc](https://github.com/sealsystems/node-connect-service/commit/8a405bc))
+
 ## 3.0.17 (2021-05-31)
 
 ### Chores
