@@ -16,14 +16,17 @@ const connectService = proxyquire('../lib/connectService', {
 
     return `This is a ${options.protocol} client.`;
   },
-  async './getProtocol'(consul, host) {
-    assert.that(consul).is.not.undefined();
-    assert.that(host).is.not.undefined();
-    if (protocolError) {
-      throw protocolError;
-    }
+  '@sealsystems/service-protocol': {
+    async getProtocol(consul, host) {
+      assert.that(consul).is.not.undefined();
+      assert.that(host).is.not.undefined();
+      assert.that(host).is.ofType('string');
+      if (protocolError) {
+        throw protocolError;
+      }
 
-    return 'http';
+      return 'http';
+    }
   }
 });
 
