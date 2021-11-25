@@ -6,6 +6,7 @@ const proxyquire = require('proxyquire');
 let protocolError;
 let connectError;
 let connectedServices;
+let lastConnectOptions;
 const connectService = proxyquire('../lib/connectService', {
   async './connect'(options, host) {
     assert.that(options.consul).is.not.undefined();
@@ -14,6 +15,7 @@ const connectService = proxyquire('../lib/connectService', {
     }
     connectedServices.push(host);
 
+    lastConnectOptions = options;
     return `This is a ${options.protocol} client.`;
   },
   '@sealsystems/service-protocol': {
@@ -35,6 +37,7 @@ suite('connectService', () => {
     connectError = null;
     connectedServices = [];
     protocolError = null;
+    lastConnectOptions = null;
   });
 
   test('is a function', async () => {
@@ -177,5 +180,51 @@ suite('connectService', () => {
     assert.that(client).is.equalTo('This is a http client.');
     assert.that(connectedServices.length).is.equalTo(1);
     assert.that(connectedServices[0]).is.equalTo(host);
+    assert.that(lastConnectOptions.agent).is.ofType('object');
+  });
+
+  test('uses agent from options.', async () => {
+    const host = {
+      name: 'woanders',
+      port: '1234'
+    };
+
+    const client = await connectService(
+      {
+        consul: {},
+        service: 'test service',
+        path: '/test/path',
+        agent: 'myAgent'
+      },
+      host
+    );
+
+    assert.that(client).is.equalTo('This is a http client.');
+    assert.that(connectedServices.length).is.equalTo(1);
+    assert.that(connectedServices[0]).is.equalTo(host);
+    assert.that(lastConnectOptions.agent).is.ofType('string');
+    assert.that(lastConnectOptions.agent).is.equalTo('myAgent');
+  });
+
+  test('uses agent from options if agent is false.', async () => {
+    const host = {
+      name: 'woanders',
+      port: '1234'
+    };
+
+    const client = await connectService(
+      {
+        consul: {},
+        service: 'test service',
+        path: '/test/path',
+        agent: false
+      },
+      host
+    );
+
+    assert.that(client).is.equalTo('This is a http client.');
+    assert.that(connectedServices.length).is.equalTo(1);
+    assert.that(connectedServices[0]).is.equalTo(host);
+    assert.that(lastConnectOptions.agent).is.false();
   });
 });

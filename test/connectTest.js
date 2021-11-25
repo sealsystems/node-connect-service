@@ -144,9 +144,7 @@ suite('connect', () => {
   });
 
   test('returns a http client.', async () => {
-    const nockScope = nock('http://127.0.0.1:3000')
-      .post('/test/path', 'huhu')
-      .reply(200);
+    const nockScope = nock('http://127.0.0.1:3000').post('/test/path', 'huhu').reply(200);
 
     const client = await connect(
       {
@@ -174,9 +172,7 @@ suite('connect', () => {
   });
 
   test('returns a http client if ip address is used to connect.', async () => {
-    const nockScope = nock('http://127.0.0.1:3000')
-      .post('/test/path', 'huhu')
-      .reply(200);
+    const nockScope = nock('http://127.0.0.1:3000').post('/test/path', 'huhu').reply(200);
 
     const client = await connect(
       {
@@ -204,9 +200,7 @@ suite('connect', () => {
   });
 
   test('returns a https client.', async () => {
-    const nockScope = nock('https://127.0.0.1:3000')
-      .post('/test/path', 'huhu')
-      .reply(200);
+    const nockScope = nock('https://127.0.0.1:3000').post('/test/path', 'huhu').reply(200);
 
     const client = await connect(
       {
@@ -234,9 +228,7 @@ suite('connect', () => {
   });
 
   test('uses `/` if no path is given.', async () => {
-    const nockScope = nock('http://127.0.0.1:3000')
-      .post('/', 'huhu')
-      .reply(200);
+    const nockScope = nock('http://127.0.0.1:3000').post('/', 'huhu').reply(200);
 
     const client = await connect(
       {
@@ -264,9 +256,7 @@ suite('connect', () => {
 
   suite('client', () => {
     test('emits an error if wrong path is given.', async () => {
-      const nockScope = nock('http://127.0.0.1:3000')
-        .post('/expected/path', 'huhu')
-        .reply(200);
+      const nockScope = nock('http://127.0.0.1:3000').post('/expected/path', 'huhu').reply(200);
 
       const client = await connect(
         {
@@ -294,9 +284,7 @@ suite('connect', () => {
     });
 
     test('contains a requestOptions object.', async () => {
-      nock('http://127.0.0.1:3000')
-        .post('/test/path', 'huhu')
-        .reply(200);
+      nock('http://127.0.0.1:3000').post('/test/path', 'huhu').reply(200);
 
       const client = await connect(
         {
