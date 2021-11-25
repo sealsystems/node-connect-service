@@ -1,3 +1,12 @@
+## 3.1.0 (2021-11-25)
+
+### Features
+
+
+Don't override agent in options if already set ([b8d3b23](https://github.com/sealsystems/node-connect-service/commit/b8d3b23))
+
+Die eigentliche Änderung ist in lib/connectService(Test).js, der Rest sind Linter fixes
+
 ## 3.0.18 (2021-10-20)
 
 ### Chores
