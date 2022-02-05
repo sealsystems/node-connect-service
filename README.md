@@ -1,7 +1,5 @@
 # @sealsystems/connect-service
 
-[![CircleCI](https://circleci.com/gh/sealsystems/node-connect-service.svg?style=svg)](https://circleci.com/gh/sealsystems/node-connect-service)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/4s0wchxggjqtfgp3?svg=true)](https://ci.appveyor.com/project/Plossys/node-connect-service)
 
 Connects to a service with given host name and port number.
 
