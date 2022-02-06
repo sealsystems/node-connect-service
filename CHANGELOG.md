@@ -1,3 +1,10 @@
+## 3.1.1 (2022-02-06)
+
+### Chores
+
+
+bump [@sealsystems](https://github.com/sealsystems)/tlscert from 2.3.20 to 2.3.21 ([1cdcace](https://github.com/sealsystems/node-connect-service/commit/1cdcace))
+
 ## 3.1.0 (2021-11-25)
 
 ### Features
