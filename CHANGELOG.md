@@ -1,3 +1,10 @@
+## 3.1.2 (2022-02-08)
+
+### Chores
+
+
+update deps ([73ce0d3](https://github.com/sealsystems/node-connect-service/commit/73ce0d3))
+
 ## 3.1.1 (2022-02-06)
 
 ### Chores
