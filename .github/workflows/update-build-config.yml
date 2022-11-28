@@ -2,7 +2,7 @@ name: update-build-config
 
 on:
   schedule:
-    - cron: "56 20 * * *"
+    - cron: "24 19 * * *"
   workflow_dispatch:
     # No inputs needed
 
@@ -42,7 +42,7 @@ jobs:
           key: ${{ runner.os }}-${{ env.cache-name }}-16.18.1-${{ hashFiles('**/package-lock.json') }}
 
       - name: Set legacy-peer-deps
-        if: ${{ @sealsystems/seal-node:oss-module == '@sealsystems/seal-node:ui-service' }}
+        if: ${{ '@sealsystems/seal-node:oss-module' == '@sealsystems/seal-node:ui-service' }}
         run: |
           npm config set legacy-peer-deps true
         env:
