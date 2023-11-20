@@ -1,3 +1,13 @@
+## 3.2.0 (2023-11-20)
+
+### Features
+
+
+make tls version configurable ([3907d3f](https://github.com/sealsystems/node-connect-service/commit/3907d3f))
+
+Make tls version configurable, when using connection via https (https://sealsystems.atlassian.net/browse/PLS-1771).
+Some dependency updates.
+
 ## 3.1.3 (2022-08-15)
 
 ### Chores
