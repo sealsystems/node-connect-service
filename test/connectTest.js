@@ -1,5 +1,6 @@
 'use strict';
 
+const tlscert = require('@sealsystems/tlscert');
 const assert = require('assertthat');
 const nock = require('nock');
 const proxyquire = require('proxyquire');
@@ -216,6 +217,7 @@ suite('connect', () => {
     );
 
     assert.that(client).is.ofType('object');
+    assert.that(client.requestOptions.minVersion).is.equalTo(await tlscert.getTlsMinVersion());
 
     await new Promise((resolve) => {
       client.once('response', (res) => {
