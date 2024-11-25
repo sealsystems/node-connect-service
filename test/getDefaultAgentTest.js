@@ -20,12 +20,28 @@ suite('getDefaultAgent', () => {
       .is.throwing('Protocol is missing.');
   });
 
-  test('returns the http agent.', async () => {
-    assert.that(getDefaultAgent('http')).is.instanceOf(http.Agent);
+  test('returns the http agent with keepAlive set to true.', async () => {
+    const agent = getDefaultAgent('http');
+    assert.that(agent).is.instanceOf(http.Agent);
+    assert.that(agent.keepAlive).is.true();
   });
 
-  test('returns the https agent.', async () => {
-    assert.that(getDefaultAgent('https')).is.instanceOf(https.Agent);
+  test('returns the https agent with keepAlive set to true.', async () => {
+    const agent = getDefaultAgent('https');
+    assert.that(agent).is.instanceOf(https.Agent);
+    assert.that(agent.keepAlive).is.true();
+  });
+
+  test('returns the http agent with keepAlive set to false.', async () => {
+    const agent = getDefaultAgent('http', false);
+    assert.that(agent).is.instanceOf(http.Agent);
+    assert.that(agent.keepAlive).is.false();
+  });
+
+  test('returns the https agent with keepAlive set to false.', async () => {
+    const agent = getDefaultAgent('https', false);
+    assert.that(agent).is.instanceOf(https.Agent);
+    assert.that(agent.keepAlive).is.false();
   });
 
   test('returns undefined if protocol is unknown.', async () => {
