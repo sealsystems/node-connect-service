@@ -1,3 +1,10 @@
+## 3.2.2 (2024-11-25)
+
+### Bug Fixes
+
+
+Defaults agents to close sockets immediately ([c5c3924](https://github.com/sealsystems/node-connect-service/commit/c5c3924))
+
 ## 3.2.1 (2024-01-09)
 
 ### Bug Fixes
