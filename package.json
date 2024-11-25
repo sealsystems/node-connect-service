@@ -22,14 +22,14 @@
   "main": "lib/connectService.js",
   "dependencies": {
     "@sealsystems/log": "2.4.3",
-    "@sealsystems/service-protocol": "2.0.0",
-    "@sealsystems/tlscert": "2.6.3",
+    "@sealsystems/service-protocol": "2.1.0",
+    "@sealsystems/tlscert": "2.6.8",
     "getenv": "1.0.0"
   },
   "devDependencies": {
-    "@sealsystems/eslint-config-es": "3.7.8",
+    "@sealsystems/eslint-config-es": "3.7.10",
     "@sealsystems/mocha": "4.2.3",
-    "nock": "13.4.0",
+    "nock": "13.5.6",
     "nodeenv": "3.0.75",
     "proxyquire": "2.1.3"
   },
