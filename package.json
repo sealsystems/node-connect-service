@@ -1,6 +1,6 @@
 {
   "name": "@sealsystems/connect-service",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "Connects to a service.",
   "author": {
     "name": "SEAL Systems AG",

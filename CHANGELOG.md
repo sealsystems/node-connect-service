@@ -1,3 +1,10 @@
+## 3.2.3 (2025-01-08)
+
+### Bug Fixes
+
+
+updated deps ([f1e61d2](https://github.com/sealsystems/node-connect-service/commit/f1e61d2))
+
 ## 3.2.2 (2024-11-25)
 
 ### Bug Fixes
